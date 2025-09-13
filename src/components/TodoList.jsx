@@ -11,11 +11,15 @@ const TodoList = () => {
 
     return (
         <div className={'todo-group'}>
-            <div>This is the TodoList Component.</div>
+            <h1>Todo List</h1>
             {
                 state.map(({id, text, done}) => {
-                    return <div className={`todo-item ${done? 'done':''}`}
-                                onClick={() => toggleDone(id)}>{text}</div>
+                    return <div className={'todo-row'}>
+                        <div className={`todo-item ${done ? 'done' : ''}`}
+                             onClick={() => toggleDone(id)}>{text}
+                        </div>
+                        <button className={'button-delete'}>X</button>
+                    </div>
                 })
             }
         </div>
