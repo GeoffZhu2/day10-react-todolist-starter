@@ -9,6 +9,10 @@ const TodoList = () => {
         dispatch({type: 'DONE', id: id})
     }
 
+    function toggleDelete(id) {
+        dispatch({type: 'DELETE', id: id})
+    }
+
     return (
         <div className={'todo-group'}>
             <h1>Todo List</h1>
@@ -18,7 +22,7 @@ const TodoList = () => {
                         <div className={`todo-item ${done ? 'done' : ''}`}
                              onClick={() => toggleDone(id)}>{text}
                         </div>
-                        <button className={'button-delete'}>X</button>
+                        <button className={'button-delete'} onClick={()=>toggleDelete(id)}>X</button>
                     </div>
                 })
             }
