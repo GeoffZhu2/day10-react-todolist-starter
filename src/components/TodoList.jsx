@@ -7,9 +7,9 @@ import TodoGenerator from './TodoGenerator';
 const TodoList = () => {
     const { state, dispatch } = useContext(TodoContext);
 
-    const toggleDone = (id) => dispatch({ type: 'DONE', id });
-    const deleteTodo = (id) => dispatch({ type: 'DELETE', id });
-    const addTodo = (text) => dispatch({ type: 'ADD', text });
+    const toggleDone = id => dispatch({ type: 'DONE', id });
+    const deleteTodo = id => dispatch({ type: 'DELETE', id });
+    const addTodo = text => dispatch({ type: 'ADD', text });
 
     return (
         <div className={'todo-group'}>
