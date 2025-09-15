@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {addTodos} from "../apis/api";
+import {Button, Input} from "antd";
 
 const TodoGenerator = ({onAdd}) => {
     const [value, setValue] = useState('');
@@ -25,14 +26,12 @@ const TodoGenerator = ({onAdd}) => {
 
     return (
         <div className="todo-nav">
-            <input
-                type="text"
-                value={value}
+            <Input
                 placeholder="Add a new todoItem"
+                value={value}
                 onChange={(e) => setValue(e.target.value)}
-                onKeyDown={handleKey}
-            />
-            <button onClick={handleAdd}>add</button>
+                onKeyDown={handleKey}/>
+            <Button type="primary" onClick={handleAdd}>add</Button>
         </div>
     );
 };
