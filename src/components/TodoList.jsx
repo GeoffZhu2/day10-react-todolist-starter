@@ -1,52 +1,25 @@
-import {useContext, useState} from "react";
-import {TodoContext} from "../contexts/TodoContext";
+import React, { useContext } from 'react';
+import { TodoContext } from '../contexts/TodoContext';
 import './TodoList.css';
+import TodoGroup from './TodoGroup';
+import TodoGenerator from './TodoGenerator';
 
 const TodoList = () => {
-    const {state, dispatch} = useContext(TodoContext)
-    const [newTodo, setNewTodo] = useState("")
+    const { state, dispatch } = useContext(TodoContext);
 
-    function toggleDone(id) {
-        dispatch({type: 'DONE', id: id})
-    }
-
-    function toggleDelete(id) {
-        dispatch({type: 'DELETE', id: id})
-    }
-
-    function addTodo() {
-        if (newTodo.trim() !== "") {
-            dispatch({type: 'ADD', text: newTodo});
-            setNewTodo("");
-        }
-    }
+    const toggleDone = (id) => dispatch({ type: 'DONE', id });
+    const deleteTodo = (id) => dispatch({ type: 'DELETE', id });
+    const addTodo = (text) => dispatch({ type: 'ADD', text });
 
     return (
         <div className={'todo-group'}>
             <h1>Todo List</h1>
-            {
-                state.length === 0 ? (
-                    <p>Add the things you need to do today...</p>
-                ) : (
-                    state.map(({id, text, done}) => {
-                        return <div className={'todo-row'}>
-                            <div className={`todo-item ${done ? 'done' : ''}`}
-                                 onClick={() => toggleDone(id)}>{text}
-                            </div>
-                            <button className={'button-delete'} onClick={() => toggleDelete(id)}>X</button>
-                        </div>
-                    })
-                )
-            }
-            <div className="todo-nav">
-                <input
-                    type="text"
-                    value={newTodo}
-                    onChange={(e) => setNewTodo(e.target.value)}
-                    placeholder="Add a new todoItem"
-                />
-                <button onClick={addTodo}>add</button>
-            </div>
+            <TodoGroup
+                todos={state}
+                onToggleDone={toggleDone}
+                onDelete={deleteTodo}
+            />
+            <TodoGenerator onAdd={addTodo} />
         </div>
     );
 }
