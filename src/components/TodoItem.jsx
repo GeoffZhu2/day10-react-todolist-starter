@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import './TodoList.css';
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {DeleteOutlined, EditOutlined, SnippetsOutlined} from "@ant-design/icons";
 import {Input} from "antd";
 import UpdateModal from "./updateModal";
+import {useNavigate} from "react-router";
 
 const TodoItem = ({todo, onToggleDone, onDelete, onEdit}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editValue, setEditValue] = useState(todo.text);
+    const navigate = useNavigate();
 
     const handleEdit = () => {
         setEditValue(todo.text);
@@ -20,8 +22,9 @@ const TodoItem = ({todo, onToggleDone, onDelete, onEdit}) => {
                 onClick={() => onToggleDone(todo.id)}
                 value={todo.text}
             />
-            <EditOutlined className="button-edit" onClick={handleEdit}/>
-            <DeleteOutlined className="button-delete" onClick={() => onDelete(todo.id)}/>
+            <EditOutlined className="button-icon" onClick={handleEdit}/>
+            <DeleteOutlined className="button-icon" onClick={() => onDelete(todo.id)}/>
+            <SnippetsOutlined className="button-icon" onClick={() => navigate(`/todos/${todo.id}`)}/>
             <UpdateModal
                 isModalOpen={isModalOpen}
                 editValue={editValue}

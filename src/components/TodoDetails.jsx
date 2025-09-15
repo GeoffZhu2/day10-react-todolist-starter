@@ -1,10 +1,11 @@
-import {useParams} from "react-router";
+import {useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {getTodos} from "../apis/api";
-import {Card, Descriptions, Tag} from "antd";
+import {Button, Card, Descriptions, Tag} from "antd";
 
 export function TodoDetails() {
     const {key: id} = useParams();
+    const navigate = useNavigate();
     const [todo, setTodo] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -53,6 +54,13 @@ export function TodoDetails() {
                         </Tag>
                     </Descriptions.Item>
                 </Descriptions>
+                <Button
+                    type="primary"
+                    style={{marginTop: 16}}
+                    onClick={() => navigate('/todos')}
+                >
+                    Back to Todo List
+                </Button>
             </Card>
         </div>
     );
