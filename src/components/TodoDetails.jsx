@@ -8,15 +8,20 @@ export function TodoDetails() {
     const navigate = useNavigate();
     const [todo, setTodo] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [notFound, setNotFound] = useState(false);
 
     useEffect(() => {
         const fetchTodo = async () => {
             try {
                 const response = await getTodos();
                 const todoItem = response.data.find((item) => item.id === id);
+                if (!todoItem) {
+                    setNotFound(true);
+                }
                 setTodo(todoItem);
             } catch (error) {
                 console.error("Failed to fetch todo details:", error);
+                setNotFound(true);
             } finally {
                 setLoading(false);
             }
@@ -28,8 +33,9 @@ export function TodoDetails() {
         return <h1>Loading...</h1>;
     }
 
-    if (!todo) {
-        return <h1>Todo not found</h1>;
+    if (notFound) {
+        navigate('/error');
+        return null;
     }
 
     return (

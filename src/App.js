@@ -3,11 +3,8 @@ import TodoList from "./components/TodoList";
 import {createBrowserRouter, RouterProvider} from "react-router";
 import {DefaultLayout} from "./layout/DefaultLayout";
 import {TodoDetails} from "./components/TodoDetails";
+import {ErrorPage} from "./components/ErrorPage";
 
-
-function ErrorPage() {
-    return <h1>Error Page</h1>
-}
 
 const routes = [
     {
