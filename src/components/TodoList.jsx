@@ -16,7 +16,7 @@ const TodoList = () => {
     const deleteTodo = async (id) => {
         try {
             await deleteTodos(id);
-            dispatch({ type: 'DELETE', id });
+            dispatch({type: 'DELETE', id});
         } catch (error) {
             console.error("删除 todo 失败:", error);
         }

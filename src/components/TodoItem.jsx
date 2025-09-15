@@ -18,7 +18,7 @@ const TodoItem = ({todo, onToggleDone, onDelete}) => {
                 onClick={() => onToggleDone(todo.id)}
                 value={todo.text}
             />
-            <EditOutlined  className="button-edit" onClick={() => onDelete(todo.id)}/>
+            <EditOutlined className="button-edit" onClick={() => onDelete(todo.id)}/>
             <DeleteOutlined className="button-delete" onClick={() => onDelete(todo.id)}/>
         </div>
     );

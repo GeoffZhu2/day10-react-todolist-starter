@@ -3,14 +3,15 @@ import TodoList from "./components/TodoList";
 import {HomeOutlined} from '@ant-design/icons';
 import {createBrowserRouter, NavLink, Outlet, RouterProvider, useParams} from "react-router";
 import {Layout, Menu} from 'antd';
-const { Header, Footer, Content } = Layout;
+
+const {Header, Footer, Content} = Layout;
 
 function DefaultLayout() {
     const items = [
         {
             key: 'home',
             label: (<NavLink to={'/'}>Home</NavLink>),
-            icon: <HomeOutlined />
+            icon: <HomeOutlined/>
         },
         {
             key: 'todos',
@@ -20,7 +21,7 @@ function DefaultLayout() {
             key: 'about',
             label: (<NavLink to={'/about'}>About Us</NavLink>)
         }
-        ]
+    ]
     return (
         <Layout>
             <Header>
@@ -29,7 +30,7 @@ function DefaultLayout() {
                     mode="horizontal"
                     defaultSelectedKeys={['2']}
                     items={items}
-                    style={{ flex: 1, minWidth: 0 }}
+                    style={{flex: 1, minWidth: 0}}
                 />
             </Header>
             <Content>
@@ -41,14 +42,17 @@ function DefaultLayout() {
         </Layout>
     )
 }
+
 function ErrorPage() {
     return <h1>Error Page</h1>
 }
+
 function TodoDetails() {
     const {key} = useParams()
     console.log(key)
     return <h1>This is : {key} Details</h1>
 }
+
 const routes = [
     {
         path: '/',
@@ -70,6 +74,7 @@ const routes = [
     }
 ]
 const router = createBrowserRouter(routes);
+
 function App() {
     // the Hooks API manage component data state
     return (
