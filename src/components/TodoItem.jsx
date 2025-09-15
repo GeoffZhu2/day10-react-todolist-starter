@@ -1,16 +1,16 @@
 import React from 'react';
 import './TodoList.css';
 
-const TodoItem = ({ id, text, done, onToggleDone, onDelete }) => {
+const TodoItem = ({todo, onToggleDone, onDelete}) => {
     return (
         <div className="todo-row">
             <div
-                className={`todo-item ${done ? 'done' : ''}`}
-                onClick={() => onToggleDone(id)}
+                className={`todo-item ${todo.done ? 'done' : ''}`}
+                onClick={() => onToggleDone(todo.id)}
             >
-                {text}
+                {todo.text}
             </div>
-            <button className="button-delete" onClick={() => onDelete(id)}>X</button>
+            <button className="button-delete" onClick={() => onDelete(todo.id)}>X</button>
         </div>
     );
 };

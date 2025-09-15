@@ -15,10 +15,10 @@ export const todoReducer = (state, action) => {
             });
         case 'DELETE':
             return state.filter(todo => todo.id !== action.id);
+        case 'LOAD_TODOS':
+            return action.todos;
         case 'ADD':
-            const newId = state.length > 0 ? state[state.length - 1].id + 1 : 1;
-            const newTodo = {id: newId, text: action.text, done: false};
-            return [...state, newTodo];
+            return [...state, action];
         default:
             return state
     }

@@ -7,7 +7,6 @@ import {initialState, todoReducer} from "../reducers/todoReducer";
 
 const TodoList = () => {
     const [state, dispatch] = useReducer(todoReducer, initialState);
-    const value = {state, dispatch};
 
     const toggleDone = id => dispatch({type: 'DONE', id});
     const deleteTodo = id => dispatch({type: 'DELETE', id});
@@ -15,16 +14,14 @@ const TodoList = () => {
 
     return (
         <div className={'todo-group'}>
-            <TodoContext.Provider value={value}>
+            <TodoContext.Provider value={{state, dispatch}}>
                 <h1>Todo List</h1>
                 <TodoGroup
-                    todos={state}
                     onToggleDone={toggleDone}
                     onDelete={deleteTodo}
                 />
                 <TodoGenerator onAdd={addTodo}/>
             </TodoContext.Provider>
-
         </div>
     );
 }
