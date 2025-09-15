@@ -15,6 +15,6 @@ export const addTodos = async (todo) => {
 export const deleteTodos = async (id) => {
     return instance.delete(`todos/${id}`);
 }
-// export const updateTodos = async (todo) => {
-//     return instance.put("todos", todo);
-// }
+export const updateTodos = async (id, todo) => {
+    return instance.put(`todos/${id}`, todo);
+}
