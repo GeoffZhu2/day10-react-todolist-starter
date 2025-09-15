@@ -1,5 +1,6 @@
 import './App.css';
 import TodoList from "./components/TodoList";
+import {HomeOutlined} from '@ant-design/icons';
 import {createBrowserRouter, NavLink, Outlet, RouterProvider, useParams} from "react-router";
 import {Layout, Menu} from 'antd';
 const { Header, Footer, Content } = Layout;
@@ -8,7 +9,8 @@ function DefaultLayout() {
     const items = [
         {
             key: 'home',
-            label: (<NavLink to={'/'}>Home</NavLink>)
+            label: (<NavLink to={'/'}>Home</NavLink>),
+            icon: <HomeOutlined />
         },
         {
             key: 'todos',
