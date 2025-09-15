@@ -1,47 +1,8 @@
 import './App.css';
 import TodoList from "./components/TodoList";
-import {HomeOutlined} from '@ant-design/icons';
-import {createBrowserRouter, NavLink, Outlet, RouterProvider, useParams} from "react-router";
-import {Layout, Menu} from 'antd';
+import {createBrowserRouter, RouterProvider, useParams} from "react-router";
+import {DefaultLayout} from "./layout/DefaultLayout";
 
-const {Header, Footer, Content} = Layout;
-
-function DefaultLayout() {
-    const items = [
-        {
-            key: 'home',
-            label: (<NavLink to={'/'}>Home</NavLink>),
-            icon: <HomeOutlined/>
-        },
-        {
-            key: 'todos',
-            label: (<NavLink to={'/todos'}>Todo List</NavLink>)
-        },
-        {
-            key: 'about',
-            label: (<NavLink to={'/about'}>About Us</NavLink>)
-        }
-    ]
-    return (
-        <Layout>
-            <Header>
-                <Menu
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items={items}
-                    style={{flex: 1, minWidth: 0}}
-                />
-            </Header>
-            <Content>
-                <Outlet></Outlet>
-            </Content>
-            <Footer>
-                footer copyright
-            </Footer>
-        </Layout>
-    )
-}
 
 function ErrorPage() {
     return <h1>Error Page</h1>
