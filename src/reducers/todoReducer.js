@@ -13,6 +13,13 @@ export const todoReducer = (state, action) => {
                 }
                 return todo;
             });
+        case 'EDIT':
+            return state.map(todo => {
+                if (todo.id === action.id) {
+                    return {...todo, text: action.text};
+                }
+                return todo;
+            });
         case 'DELETE':
             return state.filter(todo => todo.id !== action.id);
         case 'LOAD_TODOS':
