@@ -21,7 +21,7 @@ const TodoList = () => {
             console.error("删除 todo 失败:", error);
         }
     }
-    const addTodo = text => dispatch({type: 'ADD', text});
+    const addTodo = todo => dispatch({type: 'ADD', ...todo});
 
     return (
         <div className={'todo-group'}>

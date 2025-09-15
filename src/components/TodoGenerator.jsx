@@ -12,8 +12,8 @@ const TodoGenerator = ({onAdd}) => {
         }
         const newTodo = {text: trimmed, done: false};
         try {
-            await addTodos(newTodo);
-            onAdd(trimmed);
+            const response = await addTodos(newTodo);
+            onAdd(response.data);
             setValue('');
         } catch (error) {
             console.error("添加 todo 失败:", error);
