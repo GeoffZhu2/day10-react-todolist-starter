@@ -31,7 +31,7 @@ const TodoGroup = ({onToggleDone, onDelete}) => {
                 <TodoItem
                     key={todo.id}
                     todo={todo}
-                    onToggleDone={onToggleDone}
+                    onToggleDone={() => onToggleDone(todo.id, todo)}
                     onDelete={onDelete}
                     onEdit={handleEdit}
                 />
