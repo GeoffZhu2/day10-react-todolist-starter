@@ -4,12 +4,20 @@ import './TodoList.css';
 import TodoGroup from './TodoGroup';
 import TodoGenerator from './TodoGenerator';
 import {initialState, todoReducer} from "../reducers/todoReducer";
+import {deleteTodos} from "../apis/api";
 
 const TodoList = () => {
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
     const toggleDone = id => dispatch({type: 'DONE', id});
-    const deleteTodo = id => dispatch({type: 'DELETE', id});
+    const deleteTodo = async (id) => {
+        try {
+            await deleteTodos(id);
+            dispatch({ type: 'DELETE', id });
+        } catch (error) {
+            console.error("删除 todo 失败:", error);
+        }
+    }
     const addTodo = text => dispatch({type: 'ADD', text});
 
     return (

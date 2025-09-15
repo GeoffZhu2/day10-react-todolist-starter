@@ -11,7 +11,10 @@ export const getTodos = async () => {
 export const addTodos = async (todo) => {
     return instance.post("todos", todo);
 }
-//
-// export const deleteTodos = async (id) => {
-//     return instance.delete("todos", id);
+
+export const deleteTodos = async (id) => {
+    return instance.delete(`todos/${id}`);
+}
+// export const updateTodos = async (todo) => {
+//     return instance.put("todos", todo);
 // }
