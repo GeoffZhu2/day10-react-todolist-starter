@@ -1,6 +1,6 @@
 import './App.css';
 import TodoList from "./components/TodoList";
-import {createBrowserRouter, NavLink, Outlet, RouterProvider} from "react-router";
+import {createBrowserRouter, NavLink, Outlet, RouterProvider, useParams} from "react-router";
 
 function DefaultLayout() {
     return <>
@@ -22,20 +22,28 @@ function DefaultLayout() {
 function ErrorPage() {
     return <h1>Error Page</h1>
 }
+function TodoDetails() {
+    const {key} = useParams()
+    console.log(key)
+    return <h1>This is : {key} Details</h1>
+}
 const routes = [
     {
         path: '/',
         element: <DefaultLayout/>,
         errorElement: <ErrorPage/>,
         children: [{
-                path: '',
-                element: <h1>Home Page</h1>
+            path: '',
+            element: <h1>Home Page</h1>
         }, {
-                path: 'todos',
-                element: <TodoList/>
+            path: 'todos',
+            element: <TodoList/>
         }, {
-                path: 'about',
-                element: <h1>About Us</h1>
+            path: 'todos/:key',
+            element: <TodoDetails/>
+        }, {
+            path: 'about',
+            element: <h1>About Us</h1>
         }]
     }
 ]
