@@ -6,12 +6,6 @@ import {Input} from "antd";
 const TodoItem = ({todo, onToggleDone, onDelete}) => {
     return (
         <div className="todo-row">
-            {/*<div*/}
-            {/*    className={`todo-item ${todo.done ? 'done' : ''}`}*/}
-            {/*    onClick={() => onToggleDone(todo.id)}*/}
-            {/*>*/}
-            {/*    {todo.text}*/}
-            {/*</div>*/}
             <Input
                 className={`todo-item ${todo.done ? 'done' : ''}`}
                 placeholder="Basic usage"
