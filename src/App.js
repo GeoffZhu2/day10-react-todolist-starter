@@ -1,17 +1,12 @@
 import './App.css';
 import TodoList from "./components/TodoList";
-import {createBrowserRouter, RouterProvider, useParams} from "react-router";
+import {createBrowserRouter, RouterProvider} from "react-router";
 import {DefaultLayout} from "./layout/DefaultLayout";
+import {TodoDetails} from "./components/TodoDetails";
 
 
 function ErrorPage() {
     return <h1>Error Page</h1>
-}
-
-function TodoDetails() {
-    const {key} = useParams()
-    console.log(key)
-    return <h1>This is : {key} Details</h1>
 }
 
 const routes = [

@@ -35,4 +35,8 @@
     margin-right: 10px;
     border: 1px solid black;
 }
-
+.todo-details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
