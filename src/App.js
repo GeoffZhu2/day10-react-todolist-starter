@@ -1,23 +1,43 @@
 import './App.css';
 import TodoList from "./components/TodoList";
 import {createBrowserRouter, NavLink, Outlet, RouterProvider, useParams} from "react-router";
+import {Layout, Menu} from 'antd';
+const { Header, Footer, Content } = Layout;
 
 function DefaultLayout() {
-    return <>
-        <header>
-            <nav>
-                <ul>
-                    <li><NavLink to={'/'}>Home</NavLink></li>
-                    <li><NavLink to={'/todos'}>Todo List</NavLink></li>
-                    <li><NavLink to={'/about'}>Home</NavLink></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <Outlet></Outlet>
-        </main>
-        <footer>footer copyright</footer>
-    </>
+    const items = [
+        {
+            key: 'home',
+            label: (<NavLink to={'/'}>Home</NavLink>)
+        },
+        {
+            key: 'todos',
+            label: (<NavLink to={'/todos'}>Todo List</NavLink>)
+        },
+        {
+            key: 'about',
+            label: (<NavLink to={'/about'}>About Us</NavLink>)
+        }
+        ]
+    return (
+        <Layout>
+            <Header>
+                <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    defaultSelectedKeys={['2']}
+                    items={items}
+                    style={{ flex: 1, minWidth: 0 }}
+                />
+            </Header>
+            <Content>
+                <Outlet></Outlet>
+            </Content>
+            <Footer>
+                footer copyright
+            </Footer>
+        </Layout>
+    )
 }
 function ErrorPage() {
     return <h1>Error Page</h1>
