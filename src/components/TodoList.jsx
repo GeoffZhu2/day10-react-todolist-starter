@@ -10,10 +10,10 @@ const TodoList = () => {
     const [state, dispatch] = useReducer(todoReducer, initialState);
 
     const toggleDone = async (id, todo) => {
-        const updatedTodo = { ...todo, done: !todo.done };
+        const updatedTodo = {...todo, done: !todo.done};
         try {
             await updateTodos(id, updatedTodo);
-            dispatch({ type: 'DONE', id });
+            dispatch({type: 'DONE', id});
         } catch (error) {
             console.error("Failed to toggle todo status:", error);
         }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Modal} from "antd";
+import {Modal} from "antd";
 import TextArea from "antd/es/input/TextArea";
 
 const UpdateModal = ({isModalOpen, editValue, onChange, onOk, onCancel}) => {

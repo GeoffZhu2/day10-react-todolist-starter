@@ -8,7 +8,7 @@ const TodoGroup = ({onToggleDone, onDelete}) => {
     const handleEdit = async (id, newText) => {
         try {
             await updateTodos(id, {text: newText});
-            dispatch({ type: 'EDIT', id, text: newText });
+            dispatch({type: 'EDIT', id, text: newText});
         } catch (error) {
             console.error("Failed to update todo:", error);
         }

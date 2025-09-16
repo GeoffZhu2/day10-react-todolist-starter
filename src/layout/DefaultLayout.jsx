@@ -40,4 +40,5 @@ export function DefaultLayout() {
         </Layout>
     )
 }
+
 export default DefaultLayout;
