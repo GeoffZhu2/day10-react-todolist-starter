@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {addTodos} from "../apis/api";
+import {addTodo} from "../apis/api";
 import {Button, Input} from "antd";
 
 const TodoGenerator = ({onAdd}) => {
@@ -12,7 +12,7 @@ const TodoGenerator = ({onAdd}) => {
         }
         const newTodo = {text: trimmed, done: false};
         try {
-            const response = await addTodos(newTodo);
+            const response = await addTodo(newTodo);
             onAdd(response.data);
             setValue('');
         } catch (error) {

@@ -1,6 +1,6 @@
 import {useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
-import {getTodos} from "../apis/api";
+import {getTodoById} from "../apis/api";
 import {Button, Card, Descriptions, Tag} from "antd";
 
 export function TodoDetails() {
@@ -13,8 +13,8 @@ export function TodoDetails() {
     useEffect(() => {
         const fetchTodo = async () => {
             try {
-                const response = await getTodos();
-                const todoItem = response.data.find((item) => item.id === id);
+                const response = await getTodoById(id);
+                const todoItem = response.data;
                 if (!todoItem) {
                     setNotFound(true);
                 }

@@ -8,14 +8,18 @@ export const getTodos = async () => {
     return instance.get("/todos");
 }
 
-export const addTodos = async (todo) => {
+export const getTodoById = async (id) => {
+    return instance.get(`/todos/${id}`);
+}
+
+export const addTodo = async (todo) => {
     return instance.post("/todos", todo);
 }
 
-export const deleteTodos = async (id) => {
+export const deleteTodoById = async (id) => {
     return instance.delete(`/todos/${id}`);
 }
-export const updateTodos = async (id, todo) => {
+export const updateTodoById = async (id, todo) => {
     return instance.put(`/todos/${id}`, todo);
 }
 

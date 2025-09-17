@@ -1,13 +1,13 @@
 import React, {useContext, useEffect} from 'react';
 import TodoItem from './TodoItem';
-import {getTodos, updateTodos} from "../apis/api";
+import {getTodos, updateTodoById} from "../apis/api";
 import {TodoContext} from "../contexts/TodoContext";
 
 const TodoGroup = ({onToggleDone, onDelete}) => {
     const {state, dispatch} = useContext(TodoContext)
     const handleEdit = async (id, newText) => {
         try {
-            await updateTodos(id, {text: newText});
+            await updateTodoById(id, {text: newText});
             dispatch({type: 'EDIT', id, text: newText});
         } catch (error) {
             console.error("Failed to update todo:", error);
