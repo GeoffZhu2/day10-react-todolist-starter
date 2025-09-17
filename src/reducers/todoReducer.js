@@ -13,7 +13,7 @@ export const todoReducer = (state, action) => {
         case 'EDIT':
             return state.map(todo => {
                 if (todo.id === action.id) {
-                    return {...todo, text: action.text};
+                    return {...todo, ...action.todo};
                 }
                 return todo;
             });

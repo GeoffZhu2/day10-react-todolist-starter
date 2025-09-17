@@ -30,7 +30,7 @@ const TodoItem = ({todo, onToggleDone, onDelete, onEdit}) => {
                 editValue={editValue}
                 onChange={setEditValue}
                 onOk={() => {
-                    onEdit(todo.id, editValue);
+                    onEdit({...todo, text: editValue});
                     setIsModalOpen(false);
                 }}
                 onCancel={() => setIsModalOpen(false)}

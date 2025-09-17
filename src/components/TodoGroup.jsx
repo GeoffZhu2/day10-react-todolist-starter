@@ -5,10 +5,10 @@ import {TodoContext} from "../contexts/TodoContext";
 
 const TodoGroup = ({onToggleDone, onDelete}) => {
     const {state, dispatch} = useContext(TodoContext)
-    const handleEdit = async (id, newText) => {
+    const handleEdit = async (updateTodo) => {
         try {
-            await updateTodoById(id, {text: newText});
-            dispatch({type: 'EDIT', id, text: newText});
+            await updateTodoById(updateTodo.id, updateTodo);
+            dispatch({type: 'EDIT', id: updateTodo.id, todo: updateTodo});
         } catch (error) {
             console.error("Failed to update todo:", error);
         }
